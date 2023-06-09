@@ -18,8 +18,8 @@ const (
 	Departure
 )
 
-func (ft Type) String() string {
-	return [...]string{"Arrival", "Departure"}[ft]
+func (t Type) String() string {
+	return [...]string{"Arrival", "Departure"}[t]
 }
 
 type Flight struct {
