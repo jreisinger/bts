@@ -1,4 +1,4 @@
-Btsflights is a package and a command that scrapes data about flights from Bratislava Airport [website](https://www.bts.aero/).
+Btsflights is a Go package and a command that scrapes data about flights from Bratislava Airport [website](https://www.bts.aero/).
 
 To install and use the command:
 
