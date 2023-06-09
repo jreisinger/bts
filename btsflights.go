@@ -29,6 +29,8 @@ type Flight struct {
 	Date        time.Time
 	TimePlanned time.Time
 	TimeCurrent time.Time
+	Airline     string
+	Airplane    string
 }
 
 const (
@@ -89,6 +91,10 @@ func visit(flights []Flight, n *html.Node) []Flight {
 			case "data-flight-time-current":
 				t, _ := time.Parse("15:04", a.Val)
 				flight.TimeCurrent = t
+			case "data-airline":
+				flight.Airline = a.Val
+			case "data-flight-airplane":
+				flight.Airplane = a.Val
 			}
 		}
 		if !flight.Date.IsZero() {
