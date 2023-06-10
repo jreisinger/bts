@@ -7,7 +7,7 @@ import (
 	"github.com/jreisinger/bts"
 )
 
-var flightsType = bts.FlightTypeFlag("type", bts.Arrival, "flights type")
+var flightsType = bts.FlightTypeFlag("type", bts.Both, "arrival or departure")
 
 func main() {
 	flag.Parse()

@@ -15,8 +15,11 @@ func (f *flightTypeFlag) Set(s string) error {
 	case "departure":
 		f.FlightType = Departure
 		return nil
+	case "both":
+		f.FlightType = Both
+		return nil
 	}
-	return fmt.Errorf("use arrival or departure")
+	return fmt.Errorf("use arrival, departure or both")
 }
 
 // FlightTypeFlag defines flights type flag with the specified name, default

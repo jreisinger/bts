@@ -10,16 +10,17 @@ import (
 	"golang.org/x/net/html"
 )
 
-// FlightType is arrival or departure.
+// FlightType is arrival, departure or both.
 type FlightType int
 
 const (
 	Arrival FlightType = iota
 	Departure
+	Both
 )
 
 func (t FlightType) String() string {
-	return [...]string{"Arrival", "Departure"}[t]
+	return [...]string{"arrival", "departure", "both"}[t]
 }
 
 type Flight struct {
@@ -38,13 +39,26 @@ const (
 	DeparturesURL = "https://www.bts.aero/en/flights/arrivals-departures/current-departures/"
 )
 
-// GetFlights returns the flights of arrival or departure type.
+// GetFlights returns the flights of arrival and/or departure type.
 func GetFlights(t FlightType) (Flights, error) {
 	switch t {
 	case Arrival:
 		return parse(ArrivalsURL)
 	case Departure:
 		return parse(DeparturesURL)
+	case Both:
+		arrivals, err := parse(ArrivalsURL)
+		if err != nil {
+			return nil, err
+		}
+		departures, err := parse(DeparturesURL)
+		if err != nil {
+			return nil, err
+		}
+		var both Flights
+		both = append(both, arrivals...)
+		both = append(both, departures...)
+		return both, nil
 	default:
 		return nil, fmt.Errorf("unknown flight type")
 	}
