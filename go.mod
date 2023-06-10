@@ -1,4 +1,4 @@
-module github.com/jreisinger/btsflights
+module github.com/jreisinger/bts
 
 go 1.20
 

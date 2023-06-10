@@ -1,4 +1,4 @@
-package btsflights
+package bts
 
 import (
 	"fmt"
@@ -6,8 +6,10 @@ import (
 	"text/tabwriter"
 )
 
+type Flights []Flight
+
 // Print prints a table with flights.
-func Print(flights []Flight) {
+func (flights Flights) Print() {
 	const format = "%v\t%v\t%v\t%v\t%v\t%v\t%v\t%v\n"
 	tw := new(tabwriter.Writer).Init(os.Stdout, 0, 8, 2, ' ', 0)
 	fmt.Fprintf(tw, format, "Type", "Number", "Destination", "Date", "Planned", "Current", "Airline", "Airplane")

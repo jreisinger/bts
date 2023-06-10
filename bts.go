@@ -1,6 +1,6 @@
-// Package btsflights scrapes data about flights from [Bratislava Airport].
-// [Bratislava Airport]: https://www.bts.aero
-package btsflights
+// Package bts scrapes data about flights from Bratislava Airport web
+// https://www.bts.aero.
+package bts
 
 import (
 	"fmt"
@@ -10,20 +10,20 @@ import (
 	"golang.org/x/net/html"
 )
 
-// Type is arrival or departure.
-type Type int
+// FlightType is arrival or departure.
+type FlightType int
 
 const (
-	Arrival Type = iota
+	Arrival FlightType = iota
 	Departure
 )
 
-func (t Type) String() string {
+func (t FlightType) String() string {
 	return [...]string{"Arrival", "Departure"}[t]
 }
 
 type Flight struct {
-	Type        Type
+	Type        FlightType
 	Number      string
 	Destination string
 	Date        time.Time
@@ -38,8 +38,8 @@ const (
 	DeparturesURL = "https://www.bts.aero/en/flights/arrivals-departures/current-departures/"
 )
 
-// Get returns the flights of arrival or departure type.
-func Get(t Type) ([]Flight, error) {
+// GetFlights returns the flights of arrival or departure type.
+func GetFlights(t FlightType) (Flights, error) {
 	switch t {
 	case Arrival:
 		return parse(ArrivalsURL)

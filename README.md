@@ -1,10 +1,10 @@
-Btsflights is a Go package and a command that scrapes data about flights from Bratislava Airport [website](https://www.bts.aero/).
+Bts is a Go package and a command that scrapes data about flights from Bratislava Airport website https://www.bts.aero.
 
 To install and use the command:
 
 ```
-$ go install cmd/btsflights.go
-$ btsflights -type departure
+$ go install cmd/bts.go
+$ bts -type departure
 Type       Number  Destination  Date        Planned  Current  Airline     Airplane
 ----       ------  -----------  ----        -------  -------  -------     --------
 Departure  FT3128  HURGHADA     2023-06-09  21:50    21:50    FlyEgypt    Boeing 737-800 (winglets)

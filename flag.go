@@ -1,28 +1,28 @@
-package btsflights
+package bts
 
 import (
 	"flag"
 	"fmt"
 )
 
-type flightTypeFlag struct{ Type }
+type flightTypeFlag struct{ FlightType }
 
 func (f *flightTypeFlag) Set(s string) error {
 	switch s {
 	case "arrival":
-		f.Type = Arrival
+		f.FlightType = Arrival
 		return nil
 	case "departure":
-		f.Type = Departure
+		f.FlightType = Departure
 		return nil
 	}
 	return fmt.Errorf("use arrival or departure")
 }
 
-// TypeFlag defines flights type flag with the specified name, default value,
-// and usage, and returns address of the flag variable.
-func TypeFlag(name string, value Type, usage string) *Type {
+// FlightTypeFlag defines flights type flag with the specified name, default
+// value, and usage, and returns address of the flag variable.
+func FlightTypeFlag(name string, value FlightType, usage string) *FlightType {
 	f := flightTypeFlag{value}
 	flag.CommandLine.Var(&f, name, usage)
-	return &f.Type
+	return &f.FlightType
 }
