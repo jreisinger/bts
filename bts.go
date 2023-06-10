@@ -19,8 +19,8 @@ const (
 	Both
 )
 
-func (t FlightType) String() string {
-	return [...]string{"arrival", "departure", "both"}[t]
+func (ft FlightType) String() string {
+	return [...]string{"arrival", "departure", "both"}[ft]
 }
 
 type Flight struct {
@@ -40,8 +40,8 @@ const (
 )
 
 // GetFlights returns the flights of arrival and/or departure type.
-func GetFlights(t FlightType) (Flights, error) {
-	switch t {
+func GetFlights(ft FlightType) (Flights, error) {
+	switch ft {
 	case Arrival:
 		return parse(ArrivalsURL)
 	case Departure:
