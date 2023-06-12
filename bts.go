@@ -34,6 +34,8 @@ type Flight struct {
 	Airplane    string
 }
 
+type Flights []Flight
+
 const (
 	ArrivalsURL   = "https://www.bts.aero/en/flights/arrivals-departures/current-arrivals/"
 	DeparturesURL = "https://www.bts.aero/en/flights/arrivals-departures/current-departures/"

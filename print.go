@@ -6,8 +6,6 @@ import (
 	"text/tabwriter"
 )
 
-type Flights []Flight
-
 // Print prints a table with flights.
 func (flights Flights) Print() {
 	const format = "%v\t%v\t%v\t%v\t%v\t%v\t%v\t%v\n"
